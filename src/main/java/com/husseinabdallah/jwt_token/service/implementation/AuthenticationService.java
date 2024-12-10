@@ -1,4 +1,4 @@
-package com.husseinabdallah.jwt_token.service;
+package com.husseinabdallah.jwt_token.service.implementation;
 
 import com.husseinabdallah.jwt_token.model.dtos.LoginUserDto;
 import com.husseinabdallah.jwt_token.model.dtos.RegisterUserDto;

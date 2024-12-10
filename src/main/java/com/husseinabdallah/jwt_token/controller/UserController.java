@@ -1,8 +1,10 @@
 package com.husseinabdallah.jwt_token.controller;
 
 
+import com.husseinabdallah.jwt_token.model.dtos.ApiResponse;
 import com.husseinabdallah.jwt_token.model.entities.User;
-import com.husseinabdallah.jwt_token.service.UserService;
+import com.husseinabdallah.jwt_token.service.implementation.UserService;
+import com.husseinabdallah.jwt_token.service.interfaces.UserInterface;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,10 +18,11 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    private final UserService userService;
+    private final UserInterface userInterface;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserInterface userInterface) {
+
+        this.userInterface = userInterface;
     }
 
     @GetMapping("/me")
@@ -30,9 +33,8 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<User>> allUsers() {
-        List <User> users = userService.allUsers();
-        return ResponseEntity.ok(users);
+    public ResponseEntity<ApiResponse<List<User>>> getAllUsers() {
+        return userInterface.getUsers();
     }
 
 

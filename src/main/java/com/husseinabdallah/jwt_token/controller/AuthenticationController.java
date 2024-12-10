@@ -4,7 +4,7 @@ import com.husseinabdallah.jwt_token.model.dtos.LoginResponse;
 import com.husseinabdallah.jwt_token.model.dtos.LoginUserDto;
 import com.husseinabdallah.jwt_token.model.dtos.RegisterUserDto;
 import com.husseinabdallah.jwt_token.model.entities.User;
-import com.husseinabdallah.jwt_token.service.AuthenticationService;
+import com.husseinabdallah.jwt_token.service.implementation.AuthenticationService;
 import com.husseinabdallah.jwt_token.service.JwtService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
