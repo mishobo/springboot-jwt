@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/auth")
+
 @RestController
+@RequestMapping("/auth")
 public class AuthenticationController {
     private final JwtService jwtService;
-
     private final AuthenticationService authenticationService;
-
 
     public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
         this.jwtService = jwtService;
@@ -43,8 +42,6 @@ public class AuthenticationController {
                 jwtToken,
                 jwtService.getExpirationTime()
         );
-                //.setToken(jwtToken).setExpiresIn(jwtService.getExpirationTime());
-
         return ResponseEntity.ok(loginResponse);
     }
 
