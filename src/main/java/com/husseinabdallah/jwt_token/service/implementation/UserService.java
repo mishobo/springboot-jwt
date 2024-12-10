@@ -21,15 +21,6 @@ public class UserService implements UserInterface {
     public ResponseEntity<ApiResponse<List<User>>> getUsers() {
         var users = userRepository.findAllByOrderByCreatedAtDesc();
 
-        if (users.isEmpty()) {
-            return ResponseEntity.ok(new ApiResponse<>(
-                    false,
-                    "no data found",
-                    null,
-                    "no data found"
-            ));
-        }
-
         ApiResponse<List<User>> response = new ApiResponse<>(
                 true,
                 "data fetched successfully",
