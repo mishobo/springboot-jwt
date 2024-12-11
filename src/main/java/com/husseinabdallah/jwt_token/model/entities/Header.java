@@ -14,13 +14,13 @@ public class Header {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer headerId;
+    private int headerId;
 
     @Column(unique = true)
     @NotBlank(message = "Header name is required")
     private String headerName;
 
-    @OneToMany(mappedBy = "header", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "header")
     @JsonManagedReference
     private List<SubHeader> subHeader;
 }
