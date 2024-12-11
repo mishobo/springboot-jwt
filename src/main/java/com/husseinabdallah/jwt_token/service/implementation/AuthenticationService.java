@@ -54,6 +54,7 @@ public class AuthenticationService implements AuthenticationInterface {
         return ResponseEntity.ok(response);
     }
 
+    @Override
     public ResponseEntity<ApiResponse<LoginResponse>> authenticate(LoginUserDto input) {
         var auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -61,17 +62,12 @@ public class AuthenticationService implements AuthenticationInterface {
                         input.password()
                 )
         );
-
         System.out.println("isAuthenticated: " + auth.isAuthenticated());
-
         var authenticatedUser = userRepository.findByEmail(input.email()).orElse(null);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
 
-        LoginResponse loginResponse = new LoginResponse(
-                jwtToken,
-                jwtService.getExpirationTime()
-        );
+        LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getExpirationTime());
 
         ApiResponse<LoginResponse> response = new ApiResponse<>(
                 true,
@@ -79,8 +75,6 @@ public class AuthenticationService implements AuthenticationInterface {
                 loginResponse,
                 null
         );
-
-
 
         return ResponseEntity.ok(response);
     }
