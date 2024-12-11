@@ -29,4 +29,17 @@ public class HeaderService implements HeaderInterface {
 
         return ResponseEntity.ok(response);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse<Header>> getHeader(int headerId) {
+        var header = headerRepository.findByHeaderId(headerId);
+            ApiResponse<Header> response = new ApiResponse<>(
+                    true,
+                    "Menu Header fetched successfully",
+                    header,
+                    null
+            );
+
+        return ResponseEntity.ok(response);
+    }
 }

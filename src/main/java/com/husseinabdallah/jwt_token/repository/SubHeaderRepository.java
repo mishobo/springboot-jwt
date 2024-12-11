@@ -5,5 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SubHeaderRepository extends JpaRepository <SubHeader, Integer>{
+public interface SubHeaderRepository extends JpaRepository <SubHeader, Integer> {
+
+    SubHeader findBySubHeaderId(Integer subHeaderId);
+
 }

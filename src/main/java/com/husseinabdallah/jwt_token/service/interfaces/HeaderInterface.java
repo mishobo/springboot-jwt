@@ -7,5 +7,6 @@ import org.springframework.http.ResponseEntity;
 public interface HeaderInterface {
 
     ResponseEntity<ApiResponse<Header>> createHeader(Header header);
+    ResponseEntity<ApiResponse<Header>> getHeader(int headerId);
 
 }
