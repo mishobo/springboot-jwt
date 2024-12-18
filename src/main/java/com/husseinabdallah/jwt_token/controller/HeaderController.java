@@ -1,6 +1,7 @@
 package com.husseinabdallah.jwt_token.controller;
 
 import com.husseinabdallah.jwt_token.model.dtos.ApiResponse;
+import com.husseinabdallah.jwt_token.model.dtos.NavBarDto;
 import com.husseinabdallah.jwt_token.model.entities.Header;
 import com.husseinabdallah.jwt_token.service.interfaces.HeaderInterface;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ public class HeaderController {
     }
 
     @PostMapping(value = "/create-header", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<ApiResponse<Header>> createHeader(@RequestBody Header header) {
-        return headerInterface.createHeader(header);
+    public ResponseEntity<ApiResponse<Header>> createHeader(@RequestBody NavBarDto navBar) {
+        return headerInterface.createHeader(navBar);
     }
 
     @GetMapping(value = "/get-header-by-id", produces = "application/json")

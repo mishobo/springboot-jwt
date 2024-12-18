@@ -20,7 +20,16 @@ public class Header {
     @NotBlank(message = "Header name is required")
     private String headerName;
 
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "header")
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "header")
     @JsonManagedReference
     private List<SubHeader> subHeader;
+
+    public Header() {}
+
+    public Header(String headerName) {
+        this.headerName = headerName;
+    }
+
+
+
 }
